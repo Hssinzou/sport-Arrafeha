@@ -1,0 +1,40 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">score one </th>
+      <th scope="col">score two</th>
+      <th scope="col">team one </th>
+      <th scope="col">team two </th>
+      <th scope="col">actions </th>
+      <!-- <th scope="col">
+        <div style="text-align: right;">
+          <input type="search" placeholder="search" style="border-radius: 6px;" [(ngModel)]="term" name="term">
+        </div>
+      </th> -->
+      <th scope="col">
+        <div class="input-group mb-3" style="height: 19px; ">
+          <input type="text" class="form-control" placeholder="Search By Name" aria-label="Username"
+            aria-describedby="basic-addon1" [(ngModel)]="term" name="term">
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of pageOfItems | myFilterSearch:term">
+      <td>{{m.id}}</td>
+      <td>{{m.scoreone}}</td>
+      <td>{{m.scoretwo}}</td>
+      <td>{{m.teamone}}</td>
+      <td>{{m.teamtwo}}</td>
+      <td>
+        <button type="button" class="btn btn-primary" (click)="displayMatch(m.id)">display</button>
+        <button type="button" class="btn btn-success" (click)="editMatch(m.id)">update</button>
+        <button type="button" class="btn btn-danger" (click)="deleteMatch(m.id)">delete</button>
+      </td>
+    </tr>
+    <div class="card-footer pb-0 pt-3">
+      <jw-pagination [items]="matchtesTab" [pageSize]="2" (changePage)="onChangePage($event)"></jw-pagination>
+    </div>
+  </tbody>
+</table>

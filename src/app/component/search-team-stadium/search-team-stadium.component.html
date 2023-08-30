@@ -1,0 +1,38 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg'); ">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-9 mx-auto text-center">
+          <h1 class="text-white"> Search stadium </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-7" style="margin-left: 40%; padding-top: 5%; width: 20%;">
+    <form [formGroup]="SearchForm">
+      <div class="form-group">
+        <input type="text"  formControlName="Name" class="form-control" placeholder="Stadium Name">
+      </div>
+      <div *ngIf="SearchForm.controls['Name'].invalid && 
+      (SearchForm.controls['Name'].touched ||
+      SearchForm.controls['Name'].dirty)">
+        <div *ngIf="SearchForm.controls['Name'].errors.required">Name is required</div>
+        
+        <div *ngIf="SearchForm.controls['Name'].errors.minlength">Name must be over 3 caracters</div>
+
+      </div>
+      
+      <div class="form-group" style="text-align: center;">
+        <input type="submit" class="btn btn-primary py-3 px-5" [disabled]="SearchForm.invalid" (click)="search()" value="search">
+      </div>
+        
+    </form>  
+    <div *ngIf="!errorMsg">
+        <p> stadium name :    {{findedTeam.Name}}</p>
+        <p> team owner :      {{findedTeam.owner}}</p>
+    </div>
+    <div *ngIf="errorMsg">
+        {{errorMsg}}
+    </div>
+  </div>
+  

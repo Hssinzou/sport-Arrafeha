@@ -1,0 +1,46 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg'); ">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-9 mx-auto text-center">
+          <h1 class="text-white"> Add Stadium </h1>
+          <h3 class="text-white"> </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-7" style="margin-left: 40%; padding-top: 5%; width: 20%;">
+    <form [formGroup]="stadiumForm">
+      <div class="form-group">
+        <input type="text"  formControlName="stadiumName"  class="form-control" placeholder="Name">
+      </div>
+      <div *ngIf="
+      stadiumForm.controls['stadiumName'].invalid &&
+      (stadiumForm.controls['stadiumName'].touched ||
+      stadiumForm.controls['stadiumName'].dirty)
+      ">
+      <div *ngIf="stadiumForm.controls['stadiumName'].errors.required">
+        stadiumName is required
+      </div>
+    </div>
+      <div class="form-group">
+        <input type="text"   formControlName="stadiumCapacity" class="form-control" placeholder="Capacity">
+      </div>
+      <div *ngIf="
+      stadiumForm.controls['stadiumCapacity'].invalid &&
+      (stadiumForm.controls['stadiumCapacity'].touched ||
+      stadiumForm.controls['stadiumCapacity'].dirty)
+      ">
+      <div *ngIf="stadiumForm.controls['stadiumCapacity'].errors.required">
+        stadium Capacity is required
+      </div>
+    </div>
+      <div class="form-group">
+        <input type="text"   formControlName="Country" class="form-control" placeholder="Country">
+      </div>
+      
+      
+      <div class="form-group" style="text-align: center;">
+        <input type="submit" class="btn btn-primary py-3 px-5" (click)="addStadium()" value="add stadium">
+      </div>
+    </form>  
+  </div>

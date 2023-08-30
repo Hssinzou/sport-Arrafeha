@@ -1,0 +1,64 @@
+<div class="site-mobile-menu site-navbar-target">
+  <div class="site-mobile-menu-header">
+    <div class="site-mobile-menu-close">
+      <span class="icon-close2 js-menu-toggle"></span>
+    </div>
+  </div>
+  <div class="site-mobile-menu-body"></div>
+</div>
+<header class="site-navbar py-4" role="banner">
+  <div class="container">
+    <div class="d-flex align-items-center">
+      <div class="site-logo">
+        <a href="index.html">
+          <img src="assets/images/logo.png" alt="Logo">
+        </a>
+      </div>
+      <div class="ml-auto">
+        <nav class="site-navigation position-relative text-right" role="navigation">
+          <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+            <a routerLink="signin" class="nav-link"  *ngIf="isLoggedIn()" (click)="logout()"> logout</a>
+            <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+            <li><a routerLink="matches" class="nav-link" *ngIf="isLoggedIn()">Matches</a></li>
+            <li><a routerLink="player-stats" class="nav-link" *ngIf="isLoggedIn()">Players</a></li>
+            <li><a routerLink="signin" class="nav-link" *ngIf="!isLoggedIn()">log in </a></li>
+            <li><a routerLink="myTeams" class="nav-link" *ngIf="isLoggedIn()">Teams </a></li>
+            <li><a routerLink="search" class="nav-link" *ngIf="isLoggedIn()">search</a></li>
+            <!-- ////////////////// -->
+            <li>
+              <div class="dropdown" *ngIf="isLoggedIn()">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Find
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a routerLink="search-stadium" class="nav-link">Find Stadium</a>
+                  <a routerLink="search-player" class="nav-link">Find player</a>
+                  <a routerLink="weather" class="nav-link">Find weather</a>
+                </div>
+              </div>
+            </li>
+            <!-- ///////////////// -->
+            <li>
+              <div class="dropdown" *ngIf="!isLoggedIn()">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  signup
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a routerLink="subscription" class="nav-link" *ngIf="!isLoggedIn()">sign up</a>
+                  <a routerLink="signup-admin" class="nav-link" *ngIf="!isLoggedIn()">admin signup</a>
+                </div>
+              </div> 
+            </li>
+            <li *ngIf="isLoggedIn() && user.role =='admin' " > <app-admin></app-admin> </li>
+          </ul>
+        </nav>
+        <a href="#"
+          class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
+            class="icon-menu h3 text-white"></span></a>
+      </div>
+    </div>
+  </div>
+
+</header>
